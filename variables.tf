@@ -9,11 +9,11 @@ variable "region" {
   default     = "us-west-2"
 }
 
-variable "associate_public_ip_address" {
-  default     = false
-  description = "(Optional) Associate a public ip address with an instance in a VPC. Boolean value."
-  type        = bool
-}
+#variable "associate_public_ip_address" {
+ # default     = false
+  #description = "(Optional) Associate a public ip address with an instance in a VPC. Boolean value."
+  #type        = bool
+#}
 variable "network_interface_id" {
   description = "network_interface_id"
   type        = string
