@@ -19,7 +19,7 @@ resource "aws_instance" "this" {
   iam_instance_profile        = var.instance_profile
   instance_type               = var.instance_type
   monitoring                  = var.monitoring
-  subnet_id                   = var.subnet_id
+  #subnet_id                   = var.subnet_id
   tags                        = var.tags
   vpc_security_group_ids      = var.vpc_security_group_ids
   key_name                    = var.key_name
