@@ -13,7 +13,7 @@ resource "aws_instance" "this" {
   count                       = local.enabled ? 1 : 0
   # ami                         = data.aws_ami.search.id
   ami                         = var.os
-  associate_public_ip_address = var.associate_public_ip_address
+  #associate_public_ip_address = var.associate_public_ip_address
   disable_api_termination     = var.disable_api_termination
   ebs_optimized               = var.ebs_optimized
   iam_instance_profile        = var.instance_profile
@@ -26,7 +26,7 @@ resource "aws_instance" "this" {
   user_data                   = var.user_data
   network_interface {
     network_interface_id  = var.network_interface_id
-    device_index          = 1
+    device_index          = 0
   }
   
 
