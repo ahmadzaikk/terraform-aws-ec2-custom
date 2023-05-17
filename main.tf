@@ -51,7 +51,7 @@ resource "aws_eip" "this" {
   vpc      = true
   tags     = var.tags
 }
-### 
+### network interface
 resource "aws_network_interface" "this" {
   subnet_id         = var.subnet_id
   private_ips_count = var.private_ips_count
@@ -179,6 +179,28 @@ resource "aws_volume_attachment" "attachment5" {
   count       = var.enabled_ebs_volume5 ? 1 : 0
   device_name = "/dev/sdk"
   volume_id   = aws_ebs_volume.vol5.*.id[0]
+  instance_id = aws_instance.this.*.id[0]
+  lifecycle {
+    ignore_changes = [instance_id,volume_id]
+  }
+}
+
+resource "aws_ebs_volume" "vol6" {
+  count             = var.enabled_ebs_volume6 ? 1 : 0
+  size              = var.ebs_volume6_size
+  type              = var.volume_type
+  availability_zone = aws_instance.this.*.availability_zone[0]
+  tags                        = var.tags
+  lifecycle {
+    ignore_changes = [availability_zone]
+  }
+
+}
+
+resource "aws_volume_attachment" "attachment6" {
+  count       = var.enabled_ebs_volume6 ? 1 : 0
+  device_name = "/dev/sdl"
+  volume_id   = aws_ebs_volume.vol6.*.id[0]
   instance_id = aws_instance.this.*.id[0]
   lifecycle {
     ignore_changes = [instance_id,volume_id]
