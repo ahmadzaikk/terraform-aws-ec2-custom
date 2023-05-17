@@ -66,6 +66,11 @@ variable "enabled_ebs_volume5" {
   description = "Set to `false` to prevent the module from creating any resources"
   default     = false
 }
+variable "enabled_ebs_volume6" {
+  type        = bool
+  description = "Set to `false` to prevent the module from creating any resources"
+  default     = false
+}
 
 # variable "enable_ebs_volume1_attachment" {
 #   type        = bool
@@ -142,6 +147,11 @@ variable "ebs_volume4_size" {
   default     = null
 }
 variable "ebs_volume5_size" {
+  type        = number
+  description = "size of ebs volume"
+  default     = null
+}
+variable "ebs_volume6_size" {
   type        = number
   description = "size of ebs volume"
   default     = null
