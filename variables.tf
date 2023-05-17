@@ -109,6 +109,11 @@ variable "vpc_id" {
   default     = ""
 }
 
+variable "private_ips_count" {
+  type        = number
+  description = "Size of the root volume in gigabytes"
+  default     = 0
+}
 
 variable "root_volume_size" {
   type        = number
