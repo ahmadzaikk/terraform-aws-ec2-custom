@@ -25,7 +25,7 @@ resource "aws_instance" "this" {
   key_name                    = var.key_name
   user_data                   = var.user_data
   network_interface {
-    network_interface_id  = var.network_interface_id
+    network_interface_id  = aws_network_interface.this.id
     device_index          = 0
   }
   
@@ -49,6 +49,15 @@ resource "aws_instance" "this" {
 resource "aws_eip" "this" {
   count    = var.enabled_eip ? 1 : 0
   vpc      = true
+  tags     = var.tags
+}
+### 
+resource "aws_network_interface" "this" {
+  subnet_id         = var.subnet_id
+  private_ips_count = var.private_ips_count
+  # security_groups         = [var.domain_member_sgids,aws_security_group.wsfc_sg.id,aws_security_group.wsfc_client_sg.id]
+  security_groups = var.vpc_security_group_ids
+  #   private_ips = ["10.10.130.180"]
   tags     = var.tags
 }
 
