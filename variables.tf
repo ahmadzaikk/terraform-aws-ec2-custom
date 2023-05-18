@@ -25,10 +25,6 @@ variable "enabled_eip" {
   type        = bool
 }
 
-# variable "desc_sg" {
-#   description = "security group description"
-#   type        = string
-# }
 
 variable "enabled" {
   type        = string
@@ -71,17 +67,6 @@ variable "enabled_ebs_volume6" {
   description = "Set to `false` to prevent the module from creating any resources"
   default     = false
 }
-
-# variable "enable_ebs_volume1_attachment" {
-#   type        = bool
-#   description = "Set to `false` to prevent the module from creating any resources"
-#   default     = false
-# }
-# variable "enable_ebs_volume2_attachment" {
-#   type        = bool
-#   description = "Set to `false` to prevent the module from creating any resources"
-#   default     = false
-# }
 
 
 variable "instance_type" {
@@ -216,10 +201,4 @@ variable "os" {
   description = "The Os reference to search for"
   default     = ""
 }
-
-
-
-
-
-
 
