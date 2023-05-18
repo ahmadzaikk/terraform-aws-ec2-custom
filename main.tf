@@ -2,11 +2,6 @@ locals {
   enabled = var.enabled == "true"
 }
 
-#provider "aws" {
- # region     = var.region
-#}
-
-
 
 # resource block for ec2 #
 resource "aws_instance" "this" {
@@ -51,11 +46,11 @@ resource "aws_eip" "this" {
   vpc      = true
   tags     = var.tags
 }
-### network interface
+
+# network interface
 resource "aws_network_interface" "this" {
   subnet_id         = var.subnet_id
   private_ips_count = var.private_ips_count
-  # security_groups         = [var.domain_member_sgids,aws_security_group.wsfc_sg.id,aws_security_group.wsfc_client_sg.id]
   security_groups = var.vpc_security_group_ids
   #   private_ips = ["10.10.130.180"]
   tags     = var.tags
